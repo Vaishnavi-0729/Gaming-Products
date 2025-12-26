@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Sale</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: linear-gradient(135deg, #0dcadf 0%, #0891a3 100%); 
+            padding: 20px; 
+            min-height: 100vh; 
+        }
+        .header { 
+            text-align: center; 
+            color: white; 
+            margin-bottom: 40px; 
+            padding: 20px; 
+        }
+        .header h1 { 
+            font-size: 2.5em; 
+            margin-bottom: 10px; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .header p { 
+            font-size: 1.2em; 
+            opacity: 0.95; 
+        }
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .product { 
+            background-color: #fffef0; 
+            border-radius: 15px; 
+            overflow: hidden; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+            transition: all 0.3s ease; 
+            cursor: pointer; 
+        }
+        .product:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3); 
+        }
+        .product:hover .product-img { 
+            transform: scale(1.1); 
+        }
+        .product-img { 
+            width: 100%;
+            height: 250px; 
+            object-fit: cover; 
+            transition: transform 0.3s ease; 
+        }
+        .product-details { 
+            padding: 20px; 
+        }
+        .product-name { 
+            font-size: 1.4em; 
+            font-weight: bold; 
+            color: #333; 
+            margin-bottom: 10px; 
+        }
+        .product-description { 
+            color: #666; 
+            font-size: 0.95em; 
+            margin-bottom: 15px; 
+            line-height: 1.5; 
+        }
+        .product-price { 
+            font-size: 1.5em; 
+            color: #1b3bcc; 
+            font-weight: bold; 
+            margin-bottom: 15px; 
+        }
+        .btn {
+             width: 100%; 
+             padding: 12px; 
+             background: linear-gradient(135deg, #3498db, #2980b9); 
+             color: white; 
+             border: none; 
+             border-radius: 8px; 
+             font-size: 1em; 
+             font-weight: bold; 
+             cursor: pointer; 
+             transition: opacity 0.3s ease; 
+            }
+        .btn:hover { 
+            opacity: 0.9; 
+        }
+        @media (max-width: 768px) { 
+            .header h1 { font-size: 2em; } 
+            .grid { gap: 20px; } 
+        }
+        @media (max-width: 480px) { 
+            .header h1 { font-size: 1.5em; } 
+            .grid { grid-template-columns: 1fr; } 
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎮 Gaming Products</h1>
+        <p>Discover amazing gaming gear at great prices</p>
+    </div>
+    <div class="grid">
+        <div class="product">
+            <img src="img1.jpeg" alt="PS5" class="product-img">
+            <div class="product-details">
+                <div class="product-name">PlayStation 5</div>
+                <p class="product-description">Next-gen gaming console with stunning graphics and ultra-fast loading.</p>
+                <div class="product-price">₹ 49,999</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img2.jpeg" alt="Xbox" class="product-img">
+            <div class="product-details">
+                <div class="product-name">Xbox Series X</div>
+                <p class="product-description">Powerful gaming experience with 4K resolution and Game Pass library.</p>
+                <div class="product-price">₹ 45,999</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img3.jpeg" alt="Nintendo Switch" class="product-img">
+            <div class="product-details">
+                <div class="product-name">Nintendo Switch</div>
+                <p class="product-description">Versatile gaming on the go or at home with exclusive Nintendo titles.</p>
+                <div class="product-price">₹ 29,999</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img4.jpeg" alt="Gaming Headset" class="product-img">
+            <div class="product-details">
+                <div class="product-name">Gaming Headset Pro</div>
+                <p class="product-description">Immersive 7.1 surround sound with noise-cancelling microphone.</p>
+                <div class="product-price">₹ 8,999</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const name = this.closest('.product').querySelector('.product-name').textContent;
+                this.textContent = '✓ Added!';
+                this.style.background = '#4CAF50';
+                setTimeout(() => {
+                    this.textContent = 'Add to Cart';
+                    this.style.background = 'linear-gradient(135deg, #3498db, #2980b9)';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
